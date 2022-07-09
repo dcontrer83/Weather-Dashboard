@@ -5,7 +5,7 @@ var cityLat;
 var cityLon;
 
 
-var btn = document.getElementById("btnId");
+var btnSearch = document.getElementById("btnId");
 var input = document.getElementById("exampleInputEmail1");
 var cityName = document.getElementById("cityName");
 var currentDate = document.getElementById("currentDate");
@@ -16,14 +16,127 @@ var currentWindSpeed = document.getElementById("currentWindSpeed");
 var currentUV = document.getElementById("currentUV");
 var futureForcast = document.getElementById("future");
 var searchHistory = document.getElementById("searchHistory");
-var searchHistoryNumbers = 0;
 var arrayCityName = [];
 
+var checkRepeatName = false;
+
+//when open/refresh page, search history buttons show up
+if(localStorage.getItem("cityNames") !== null) {
+    arrayCityName = JSON.parse(localStorage.getItem("cityNames"));
+    for (let i = 0; i < arrayCityName.length; i++) {
+        var searchHistoryBtn = document.createElement("button");
+        searchHistory.append(searchHistoryBtn);
+        searchHistoryBtn.setAttribute ("id", "searchHistoryBtn" + [i]);
+        var searchHistoryBtnName = document.getElementById("searchHistoryBtn" + [i])
+        searchHistoryBtnName.textContent = arrayCityName[i];
+    }
+}
 
 
+var searchHistoryBtn0 = document.getElementById("searchHistoryBtn0");
+var searchHistoryBtn1 = document.getElementById("searchHistoryBtn1");
+var searchHistoryBtn2 = document.getElementById("searchHistoryBtn2");
+var searchHistoryBtn3 = document.getElementById("searchHistoryBtn3");
+var searchHistoryBtn4 = document.getElementById("searchHistoryBtn4");
 
-btn.addEventListener("click", function() {
+if(arrayCityName.length >= 1) {
+    searchHistoryBtn0.addEventListener("click", function() {
+        city = arrayCityName[0];
+        weatherData();
+    })
+}
+
+if(arrayCityName.length >= 2) {
+    searchHistoryBtn1.addEventListener("click", function() {
+        city = arrayCityName[1];
+        weatherData();
+    })
+}
+
+if(arrayCityName.length >= 3) {
+    searchHistoryBtn2.addEventListener("click", function() {
+        city = arrayCityName[2];
+        weatherData();
+    })
+}
+
+if(arrayCityName.length >= 4) {
+    searchHistoryBtn3.addEventListener("click", function() {
+        city = arrayCityName[3];
+        weatherData();
+    })
+}
+
+if(arrayCityName.length === 5) {
+    searchHistoryBtn4.addEventListener("click", function() {
+        city = arrayCityName[4];
+        weatherData();
+    })
+}
+
+
+btnSearch.addEventListener("click", function() {
     city = input.value;
+    weatherData();    
+})
+
+//create div tags for future weather section
+for(let i = 0; i < 5; i++) {
+    var futureForcastElement = document.createElement("div");
+    futureForcastElement.setAttribute("id", "futureForcast" + [i]);
+    futureForcast.append(futureForcastElement);
+
+}
+
+//create elements for future dates
+for(let i = 0; i < 5; i++) {
+    var futureDate = document.createElement("h3");
+    futureDate.setAttribute("id", "futureDate" + [i]);
+    var futureForcast = document.getElementById("futureForcast" + [i]); 
+    futureForcast.append(futureDate);
+}
+
+//create elements for icon weather
+for(let i = 0; i < 5; i++) {
+    var futureIconWeather = document.createElement("img");
+    futureIconWeather.setAttribute("id", "futureIconWeather" + [i]);
+    var futureForcast = document.getElementById("futureForcast" + [i]); 
+    futureForcast.append(futureIconWeather);
+}
+
+//create elements for temperature
+for(let i = 0; i < 5; i++) {
+    var futureTemp = document.createElement("h3");
+    futureTemp.setAttribute("id", "futureTemp" + [i]);
+    var futureForcast = document.getElementById("futureForcast" + [i]); 
+    futureForcast.append(futureTemp);
+} 
+
+//create elements for wind speed
+for(let i = 0; i < 5; i++) {
+    var futureWindSpeed = document.createElement("h3");
+    futureWindSpeed.setAttribute("id", "futureWindSpeed" + [i]);
+    var futureForcast = document.getElementById("futureForcast" + [i]); 
+    futureForcast.append(futureWindSpeed);
+} 
+
+//create elements for humidity
+for(let i = 0; i < 5; i++) {
+    var futureHumidiy = document.createElement("h3");
+    futureHumidiy.setAttribute("id", "futureHumidity" + [i]);
+    var futureForcast = document.getElementById("futureForcast" + [i]); 
+    futureForcast.append(futureHumidiy);
+} 
+
+//create elements for future UVI
+for(let i = 0; i < 5; i++) {
+    var futureUVI = document.createElement("h3");
+    futureUVI.setAttribute("id", "futureUVI" + [i]);
+    var futureForcast = document.getElementById("futureForcast" + [i]); 
+    futureForcast.append(futureUVI);
+}
+
+function  weatherData() {
     var latLonURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + APIKey;
     fetch(latLonURL)
         .then(function (response) {
@@ -36,16 +149,128 @@ btn.addEventListener("click", function() {
             cityLon = data[0].lon; 
             var queryURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + cityLat + "&lon=" + cityLon + "&units=imperial&appid=" + APIKey;
 
-            //seach history
-            // if(arrayCityName.length = 0) {
-            //     var searchHistoryBtn = document.createElement("button");
-            //     searchHistoryBtn.setAttribute("id", "searchHistoryBtn");
-            //     searchHistory.append(searchHistoryBtn);
-            //     searchHistoryBtn.textContent = data[0].name;
-            //     searchHistoryNumbers = searchHistoryNumbers + 1;
-            // }
+            //when first time user search a city it will be locally stored in an array the city name
+            if(arrayCityName.length === 0) {
+                arrayCityName.push(data[0].name);
+                localStorage.setItem("cityNames", JSON.stringify(arrayCityName));
 
-            
+                var searchHistoryBtn = document.createElement("button");
+                searchHistory.append(searchHistoryBtn);
+                searchHistoryBtn.setAttribute ("id", "searchHistoryBtn0");
+                var searchHistoryBtnName = document.getElementById("searchHistoryBtn0")
+                searchHistoryBtnName.textContent = arrayCityName[0];
+
+                var searchHistoryBtn0 = document.getElementById("searchHistoryBtn0");
+
+                searchHistoryBtn0.addEventListener("click", function() {
+                    city = arrayCityName[0];
+                    weatherData();
+                })
+            }
+
+            //reset repeat check
+            checkRepeatName = false;
+
+            //check if there is repeat
+            for (let i = 0; i < arrayCityName.length; i++) {
+                if(arrayCityName[i] === data[0].name) {
+                    checkRepeatName = true;
+                }
+            }
+
+            //if no reapet
+            if(checkRepeatName === false) {
+                //if there 1 - 4 city names in the local storage
+                if(0 < arrayCityName.length && arrayCityName.length < 5) {
+                    arrayCityName.push(data[0].name);
+                    localStorage.setItem("cityNames", JSON.stringify(arrayCityName));
+
+                    if(arrayCityName.length === 2) {
+                        var searchHistoryBtn = document.createElement("button");
+                        searchHistory.append(searchHistoryBtn);
+                        searchHistoryBtn.setAttribute ("id", "searchHistoryBtn1");
+                        var searchHistoryBtnName = document.getElementById("searchHistoryBtn1")
+                        searchHistoryBtnName.textContent = arrayCityName[1];
+
+                        var searchHistoryBtn1 = document.getElementById("searchHistoryBtn1");
+
+                        searchHistoryBtn1.addEventListener("click", function() {
+                            city = arrayCityName[1];
+                            weatherData();
+                        })
+                    }
+
+                    if(arrayCityName.length === 3) {
+                        var searchHistoryBtn = document.createElement("button");
+                        searchHistory.append(searchHistoryBtn);
+                        searchHistoryBtn.setAttribute ("id", "searchHistoryBtn2");
+                        var searchHistoryBtnName = document.getElementById("searchHistoryBtn2")
+                        searchHistoryBtnName.textContent = arrayCityName[2];
+
+                        var searchHistoryBtn2 = document.getElementById("searchHistoryBtn2");
+
+                        searchHistoryBtn2.addEventListener("click", function() {
+                            city = arrayCityName[2];
+                            weatherData();
+                        })
+                    }
+
+                    if(arrayCityName.length === 4) {
+                        var searchHistoryBtn = document.createElement("button");
+                        searchHistory.append(searchHistoryBtn);
+                        searchHistoryBtn.setAttribute ("id", "searchHistoryBtn3");
+                        var searchHistoryBtnName = document.getElementById("searchHistoryBtn3")
+                        searchHistoryBtnName.textContent = arrayCityName[3];
+
+                        var searchHistoryBtn3 = document.getElementById("searchHistoryBtn3");
+
+                        searchHistoryBtn3.addEventListener("click", function() {
+                            city = arrayCityName[3];
+                            weatherData();
+                        })
+                    }
+
+                    if(arrayCityName.length === 5) {
+                        var searchHistoryBtn = document.createElement("button");
+                        searchHistory.append(searchHistoryBtn);
+                        searchHistoryBtn.setAttribute ("id", "searchHistoryBtn4");
+                        var searchHistoryBtnName = document.getElementById("searchHistoryBtn4")
+                        searchHistoryBtnName.textContent = arrayCityName[4];
+
+                        var searchHistoryBtn4 = document.getElementById("searchHistoryBtn4");
+
+                        searchHistoryBtn4.addEventListener("click", function() {
+                            city = arrayCityName[4];
+                            weatherData();
+                        })
+                    }
+                }
+
+                // if there is 5 city names in local storage
+                else {
+                    arrayCityName.shift();
+                    arrayCityName.push(data[0].name);
+                    localStorage.setItem("cityNames", JSON.stringify(arrayCityName));
+
+                    //rename each button
+                    var searchHistoryBtnName = document.getElementById("searchHistoryBtn0")
+                    searchHistoryBtnName.textContent = arrayCityName[0];
+
+                    var searchHistoryBtnName = document.getElementById("searchHistoryBtn1")
+                    searchHistoryBtnName.textContent = arrayCityName[1];
+
+                    var searchHistoryBtnName = document.getElementById("searchHistoryBtn2")
+                    searchHistoryBtnName.textContent = arrayCityName[2];
+
+                    var searchHistoryBtnName = document.getElementById("searchHistoryBtn3")
+                    searchHistoryBtnName.textContent = arrayCityName[3];
+
+                    var searchHistoryBtnName = document.getElementById("searchHistoryBtn4")
+                    searchHistoryBtnName.textContent = arrayCityName[4];
+                    
+
+                }
+            }
 
     fetch(queryURL)
         .then(function (response) {
@@ -146,61 +371,4 @@ btn.addEventListener("click", function() {
 
         });
         })    
-
-})
-
-//create div tags for future weather section
-for(let i = 0; i < 5; i++) {
-    var futureForcastElement = document.createElement("div");
-    futureForcastElement.setAttribute("id", "futureForcast" + [i]);
-    futureForcast.append(futureForcastElement);
-
-}
-
-//create elements for future dates
-for(let i = 0; i < 5; i++) {
-    var futureDate = document.createElement("h3");
-    futureDate.setAttribute("id", "futureDate" + [i]);
-    var futureForcast = document.getElementById("futureForcast" + [i]); 
-    futureForcast.append(futureDate);
-}
-
-//create elements for icon weather
-for(let i = 0; i < 5; i++) {
-    var futureIconWeather = document.createElement("img");
-    futureIconWeather.setAttribute("id", "futureIconWeather" + [i]);
-    var futureForcast = document.getElementById("futureForcast" + [i]); 
-    futureForcast.append(futureIconWeather);
-}
-
-//create elements for temperature
-for(let i = 0; i < 5; i++) {
-    var futureTemp = document.createElement("h3");
-    futureTemp.setAttribute("id", "futureTemp" + [i]);
-    var futureForcast = document.getElementById("futureForcast" + [i]); 
-    futureForcast.append(futureTemp);
-} 
-
-//create elements for wind speed
-for(let i = 0; i < 5; i++) {
-    var futureWindSpeed = document.createElement("h3");
-    futureWindSpeed.setAttribute("id", "futureWindSpeed" + [i]);
-    var futureForcast = document.getElementById("futureForcast" + [i]); 
-    futureForcast.append(futureWindSpeed);
-} 
-
-//create elements for humidity
-for(let i = 0; i < 5; i++) {
-    var futureHumidiy = document.createElement("h3");
-    futureHumidiy.setAttribute("id", "futureHumidity" + [i]);
-    var futureForcast = document.getElementById("futureForcast" + [i]); 
-    futureForcast.append(futureHumidiy);
-} 
-
-//create elements for future UVI
-for(let i = 0; i < 5; i++) {
-    var futureUVI = document.createElement("h3");
-    futureUVI.setAttribute("id", "futureUVI" + [i]);
-    var futureForcast = document.getElementById("futureForcast" + [i]); 
-    futureForcast.append(futureUVI);
-}
+    }
