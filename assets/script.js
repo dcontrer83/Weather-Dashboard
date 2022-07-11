@@ -80,13 +80,13 @@ btnSearch.addEventListener("click", function() {
     weatherData();    
 })
 
-//create div tags for future weather section
-for(let i = 0; i < 5; i++) {
-    var futureForcastElement = document.createElement("div");
-    futureForcastElement.setAttribute("id", "futureForcast" + [i]);
-    futureForcast.append(futureForcastElement);
+// //create div tags for future weather section
+// for(let i = 0; i < 5; i++) {
+//     var futureForcastElement = document.createElement("div");
+//     futureForcastElement.setAttribute("id", "futureForcast" + [i]);
+//     futureForcast.append(futureForcastElement);
 
-}
+// }
 
 //create elements for future dates
 for(let i = 0; i < 5; i++) {
