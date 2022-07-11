@@ -1,3 +1,8 @@
+container {
+    display: flex;
+    padding-bottom: 1%;
+}
+
 /* nav bar */
 .nav {
     text-align: center;
@@ -14,34 +19,12 @@
     height: 100%;
 }
 
-.carousel {
-    padding-bottom: 7%;
-}
-
-/* target arrow whole area */
-.carousel-control-next {
-    width: 25%;
-    height: 82.86%;
-}
-
-.carousel-control-prev {
-    width: 25%;
-    height: 82.86%;
-}
-
-/* target arrows */
-.carousel-control-next-icon {
-    background-image: url(https://static.thenounproject.com/png/634840-200.png);
-}
-
-.carousel-control-prev-icon {
-    background-image: url(https://static.thenounproject.com/png/634840-200.png);
-    transform: scaleX(-1);
-}
-
-/* targets the button slides */
-.carousel-indicators [data-bs-target] {
-    background-color: black;
+/* future forcast box */
+.futureForcast {
+    flex-basis: 20%;
+    border: solid;
+    margin-right: 1%;
+    margin-left: 1%;
 }
 
 /* targets future icon weather all */
@@ -54,9 +37,3 @@
     line-height: inherit;
 }
 
-#carouselInner {
-    text-align: center;
-    border: solid;
-    margin-left: 25%;
-    width: 50%;
-}
