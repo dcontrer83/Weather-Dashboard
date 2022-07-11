@@ -24,9 +24,9 @@ var checkRepeatName = false;
 if(localStorage.getItem("cityNames") !== null) {
     arrayCityName = JSON.parse(localStorage.getItem("cityNames"));
     for (let i = 0; i < arrayCityName.length; i++) {
-        var searchHistoryBtn = document.createElement("button");
-        searchHistory.append(searchHistoryBtn);
-        searchHistoryBtn.setAttribute ("id", "searchHistoryBtn" + [i]);
+        // var searchHistoryBtn = document.createElement("button");
+        // searchHistory.append(searchHistoryBtn);
+        // searchHistoryBtn.setAttribute ("id", "searchHistoryBtn" + [i]);
         var searchHistoryBtnName = document.getElementById("searchHistoryBtn" + [i])
         searchHistoryBtnName.textContent = arrayCityName[i];
     }
@@ -154,9 +154,9 @@ function  weatherData() {
                 arrayCityName.push(data[0].name);
                 localStorage.setItem("cityNames", JSON.stringify(arrayCityName));
 
-                var searchHistoryBtn = document.createElement("button");
-                searchHistory.append(searchHistoryBtn);
-                searchHistoryBtn.setAttribute ("id", "searchHistoryBtn0");
+                // var searchHistoryBtn = document.createElement("button");
+                // searchHistory.append(searchHistoryBtn);
+                // searchHistoryBtn.setAttribute ("id", "searchHistoryBtn0");
                 var searchHistoryBtnName = document.getElementById("searchHistoryBtn0")
                 searchHistoryBtnName.textContent = arrayCityName[0];
 
@@ -186,9 +186,9 @@ function  weatherData() {
                     localStorage.setItem("cityNames", JSON.stringify(arrayCityName));
 
                     if(arrayCityName.length === 2) {
-                        var searchHistoryBtn = document.createElement("button");
-                        searchHistory.append(searchHistoryBtn);
-                        searchHistoryBtn.setAttribute ("id", "searchHistoryBtn1");
+                        // var searchHistoryBtn = document.createElement("button");
+                        // searchHistory.append(searchHistoryBtn);
+                        // searchHistoryBtn.setAttribute ("id", "searchHistoryBtn1");
                         var searchHistoryBtnName = document.getElementById("searchHistoryBtn1")
                         searchHistoryBtnName.textContent = arrayCityName[1];
 
@@ -201,9 +201,9 @@ function  weatherData() {
                     }
 
                     if(arrayCityName.length === 3) {
-                        var searchHistoryBtn = document.createElement("button");
-                        searchHistory.append(searchHistoryBtn);
-                        searchHistoryBtn.setAttribute ("id", "searchHistoryBtn2");
+                        // var searchHistoryBtn = document.createElement("button");
+                        // searchHistory.append(searchHistoryBtn);
+                        // searchHistoryBtn.setAttribute ("id", "searchHistoryBtn2");
                         var searchHistoryBtnName = document.getElementById("searchHistoryBtn2")
                         searchHistoryBtnName.textContent = arrayCityName[2];
 
@@ -216,9 +216,9 @@ function  weatherData() {
                     }
 
                     if(arrayCityName.length === 4) {
-                        var searchHistoryBtn = document.createElement("button");
-                        searchHistory.append(searchHistoryBtn);
-                        searchHistoryBtn.setAttribute ("id", "searchHistoryBtn3");
+                        // var searchHistoryBtn = document.createElement("button");
+                        // searchHistory.append(searchHistoryBtn);
+                        // searchHistoryBtn.setAttribute ("id", "searchHistoryBtn3");
                         var searchHistoryBtnName = document.getElementById("searchHistoryBtn3")
                         searchHistoryBtnName.textContent = arrayCityName[3];
 
@@ -231,9 +231,9 @@ function  weatherData() {
                     }
 
                     if(arrayCityName.length === 5) {
-                        var searchHistoryBtn = document.createElement("button");
-                        searchHistory.append(searchHistoryBtn);
-                        searchHistoryBtn.setAttribute ("id", "searchHistoryBtn4");
+                        // var searchHistoryBtn = document.createElement("button");
+                        // searchHistory.append(searchHistoryBtn);
+                        // searchHistoryBtn.setAttribute ("id", "searchHistoryBtn4");
                         var searchHistoryBtnName = document.getElementById("searchHistoryBtn4")
                         searchHistoryBtnName.textContent = arrayCityName[4];
 
