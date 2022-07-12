@@ -222,7 +222,7 @@ function  weatherData() {
 
             //icons for weather 
             var iconNumber = data.current.weather[0].icon;
-            currentIcon.src = "http://openweathermap.org/img/wn/" + iconNumber + "@2x.png";
+            currentIcon.src = "https://openweathermap.org/img/wn/" + iconNumber + "@2x.png";
 
             //current temp
             currentTemp.textContent = "Current Temperature: " + data.current.temp + "°F";
@@ -277,7 +277,7 @@ function  weatherData() {
                 //display icon weather
                 iconNumber = data.daily[i].weather[0].icon;
                 futureIconWeather = document.getElementById("futureIconWeather" + [i]);
-                futureIconWeather.src = "http://openweathermap.org/img/wn/" + iconNumber + "@2x.png";
+                futureIconWeather.src = "https://openweathermap.org/img/wn/" + iconNumber + "@2x.png";
 
                 //display temperature
                 futureTemp = document.getElementById("futureTemp" + [i]);
