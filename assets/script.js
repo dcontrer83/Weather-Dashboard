@@ -75,7 +75,8 @@ if(arrayCityName.length === 5) {
 }
 
 
-btnSearch.addEventListener("click", function() {
+btnSearch.addEventListener("click", function(event) {
+    event.preventDefault();
     city = input.value;
     weatherData();    
 })
