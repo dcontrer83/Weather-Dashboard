@@ -11,14 +11,51 @@
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 </head>
 <body>
-    <form>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Enter City Name:</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="City Name">
-        </div>
-        <button type="submit" class="btn btn-primary" id="btnId">Submit</button>
-      </form>
 
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container" id="jumbotronHeader">
+      <h1 class="display-4">Weather Dashboard</h1>
+    </div>
+  </div>
+
+  <!-- nav bar -->
+  <ul class="nav">
+    <li class="nav-item">
+      <h3 id="searchHistory">Search History: </h3>
+    </li>
+    <li class="nav-item">
+        <button class="searchHistoryBtn" id="searchHistoryBtn0"></button>
+    </li>
+    <li class="nav-item">
+        <button class="searchHistoryBtn" id="searchHistoryBtn1"></button>
+    </li>
+    <li class="nav-item">
+        <button class="searchHistoryBtn" id="searchHistoryBtn2"></button>
+    </li>
+    <li class="nav-item">
+        <button class="searchHistoryBtn" id="searchHistoryBtn3"></button>
+    </li>
+    <li class="nav-item">
+        <button class="searchHistoryBtn" id="searchHistoryBtn4"></button>
+    </li>
+  
+  </ul>
+
+  <div id="formAndCurrentBox">
+    <form>
+      <div class="form-group" id="formInput">
+        <div id="formInputBox">
+          <label for="exampleInputEmail1">Enter City Name:</label>
+          <div id="inputAndBtn">
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="City Name">
+            <button type="submit" class="btn btn-primary" id="btnId">Submit</button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+
+    <div id="currentForcast">
       <h3 id="cityName">City Name: </h3>
       <h3 id="currentDate">Current Date: </h3>
       <img id="currentIcon">
@@ -26,10 +63,57 @@
       <h3 id="currentHumidity">Current Humidity: </h3>
       <h3 id="currentWindSpeed">Current Wind Speed: </h3>
       <h3 id="currentUV">Current UV Index: </h3>
+    </div>
+  </div>
 
       <h3 id="future">Future Five Day Forcast: </h3>
 
-      <h3 id="searchHistory">Search History: </h3>
+      <container>
+        <div class="futureForcast" id="futureForcast0">
+          <h5 id="futureDate0">Date: </h5>
+          <img class="futureIconWeather" id="futureIconWeather0">
+          <h5 id="futureTemp0">Temperature: </h5>
+          <h5 id="futureWindSpeed0">Wind Speed: </h5>
+          <h5 id="futureHumidity0">Humidity: </h5>
+          <h5 id="futureUVI0">UV Index: </h5>
+        </div>
+
+        <div class="futureForcast" id="futureForcast1">
+          <h5 id="futureDate1">Date: </h5>
+          <img class="futureIconWeather" id="futureIconWeather1">
+          <h5 id="futureTemp1">Temperature: </h5>
+          <h5 id="futureWindSpeed1">Wind Speed: </h5>
+          <h5 id="futureHumidity1">Humidity: </h5>
+          <h5 id="futureUVI1">UV Index: </h5>
+        </div>
+
+        <div class="futureForcast" id="futureForcast2">
+          <h5 id="futureDate2">Date: </h5>
+          <img class="futureIconWeather" id="futureIconWeather2">
+          <h5 id="futureTemp2">Temperature: </h5>
+          <h5 id="futureWindSpeed2">Wind Speed: </h5>
+          <h5 id="futureHumidity2">Humidity: </h5>
+          <h5 id="futureUVI2">UV Index: </h5>
+        </div>
+
+        <div class="futureForcast" id="futureForcast3">
+          <h5 id="futureDate3">Date: </h5>
+          <img class="futureIconWeather" id="futureIconWeather3">
+          <h5 id="futureTemp3">Temperature: </h5>
+          <h5 id="futureWindSpeed3">Wind Speed: </h5>
+          <h5 id="futureHumidity3">Humidity: </h5>
+          <h5 id="futureUVI3">UV Index: </h5>
+        </div>
+
+        <div class="futureForcast" id="futureForcast4">
+          <h5 id="futureDate4">Date: </h5>
+          <img class="futureIconWeather" id="futureIconWeather4">
+          <h5 id="futureTemp4">Temperature: </h5>
+          <h5 id="futureWindSpeed4">Wind Speed: </h5>
+          <h5 id="futureHumidity4">Humidity: </h5>
+          <h5 id="futureUVI4">UV Index: </h5>
+        </div>
+      </container>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <script src="./assets/script.js"></script>
