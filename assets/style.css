@@ -1,7 +1,5 @@
-container {
-    display: flex;
-    padding-bottom: 1%;
-    text-align: center;
+body {
+    background: whitesmoke;
 }
 
 h1 {
@@ -9,8 +7,23 @@ h1 {
     color: white;
 }
 
+label {
+    font-size: 1.5em;
+}
+
+container {
+    display: flex;
+    padding-bottom: 1%;
+    text-align: center;
+}
+
+form {
+    margin-left: 1%;
+    flex-basis: 25%;
+}
+
 .jumbotron {
-    background: black;
+    background: rgb(37, 35, 35);
 }
 
 /* nav bar */
@@ -36,6 +49,7 @@ h1 {
     border: solid;
     margin-right: 1%;
     margin-left: 1%;
+    background-color: skyblue;
 }
 
 /* targets future icon weather all */
@@ -56,14 +70,9 @@ h1 {
     display: flex;
 }
 
-#formInput {
-    flex-basis: 25%;
-    margin-left: 1%;
-}
-
 #formInputBox {
     text-align: center;
-    padding-top: 8.62em;
+    padding-top: 8.2452em;
 }
 
 #inputAndBtn{
@@ -80,6 +89,7 @@ h1 {
     border: solid;
     margin-left: 1%;
     margin-right: 1%;
+    background-color: skyblue;
 }
 
 #currentIcon {
@@ -89,6 +99,7 @@ h1 {
 #future {
     padding-top: 1em;
     padding-bottom: 0.5em;
+    margin-left: 1%;
 }
 
 
