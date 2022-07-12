@@ -78,7 +78,7 @@ btnSearch.addEventListener("click", function(event) {
 })
 
 function  weatherData() {
-    var latLonURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + APIKey;
+    var latLonURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + APIKey;
     fetch(latLonURL)
         .then(function (response) {
             return response.json();
